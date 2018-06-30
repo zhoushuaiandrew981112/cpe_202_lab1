@@ -17,19 +17,29 @@ def permute(string):
                 result.append(i + j)
         return result
 
+
 def is_reachable(bears):
-    result = False
+    
+    forty_two = 42
+    two = 2
+    three = 3
+    four = 4
+    five = 5
+    ten = 10
+    hundred = 100
 
-    if bears == 42:
+    if bears < forty_two:
+        return False
+    if bears == forty_two:
         return True
-    if bears % 2 == 0:
-        result = is_reachable(bears // 2)
-    if (bears % 3 == 0 or bears % 4 == 0) and bears // 10 % 10 != 0 \
-            and bears % 10 != 0 and bears > 42:
-        result = is_reachable(bears - (bears // 10 % 10) * (bears % 10))
-    if bears % 5 == 0 and bears > 42:
-        result = is_reachable(bears - 42)
-
-    return result
+    if bears % two == 0 and is_reachable(bears // two):
+        return True
+    if bears % four == 0 or bears % three == 0:
+        digi_0 = bears % ten
+        digi_1 = (bears % hundred) // ten
+        return digi_0 * digi_1 != 0 and is_reachable(bears - digi_0 * digi_1)
+    if bears % five == 0 and is_reachable(bears - forty_two):
+        return True
+    return False
 
 

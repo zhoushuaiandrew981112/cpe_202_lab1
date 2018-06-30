@@ -38,6 +38,9 @@ class TestAssign1(unittest.TestCase):
             'ecabd', 'ecadb', 'ecbad', 'ecbda', 'ecdab', 'ecdba', 'edabc', \
             'edacb', 'edbac', 'edbca', 'edcab', 'edcba'])
 
+    def test_permute_06(self):
+        self.assertEqual(permute(""), [""]) 
+
     def test_is_reachable_01(self):
         self.assertTrue(is_reachable(250))
 
@@ -52,6 +55,7 @@ class TestAssign1(unittest.TestCase):
 
     def test_is_reachable_05(self):
         self.assertFalse(is_reachable(876))
+
 
 if __name__ == "__main__":
     unittest.main()
