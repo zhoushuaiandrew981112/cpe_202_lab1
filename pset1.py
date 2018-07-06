@@ -6,9 +6,9 @@
 
 def permute(string):
     if len(string) == 0:
-        return [""]
+        return []
     elif len(string) == 1:
-        return string
+        return [string]
     else:
         result = []
         for i in string:
@@ -21,25 +21,24 @@ def permute(string):
 def is_reachable(bears):
     
     forty_two = 42
-    two = 2
-    three = 3
-    four = 4
-    five = 5
-    ten = 10
     hundred = 100
+    
+    digi_0 = bears % 10
+    digi_1 = (bears % hundred) // 10
+
 
     if bears < forty_two:
         return False
     if bears == forty_two:
         return True
-    if bears % two == 0 and is_reachable(bears // two):
+    if bears % 2 == 0 and is_reachable(bears // 2):
         return True
-    if bears % four == 0 or bears % three == 0:
-        digi_0 = bears % ten
-        digi_1 = (bears % hundred) // ten
-        return digi_0 * digi_1 != 0 and is_reachable(bears - digi_0 * digi_1)
-    if bears % five == 0 and is_reachable(bears - forty_two):
+    if (bears % 4 == 0 or bears % 3 == 0) and digi_0 * digi_1 != 0:         
+        if is_reachable(bears - digi_0 * digi_1):
+            return True
+    if bears % 5 == 0 and is_reachable(bears - forty_two):
         return True
+    
     return False
 
 

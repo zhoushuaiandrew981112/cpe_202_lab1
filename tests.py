@@ -4,7 +4,7 @@ from pset1 import *
 class TestAssign1(unittest.TestCase):
 
     def test_permute_01(self):
-        self.assertEqual(permute("a"), 'a')
+        self.assertEqual(permute("a"), ['a'])
 
     def test_permute_02(self):
         self.assertEqual(permute("ab"), ['ab', 'ba'])
@@ -39,7 +39,7 @@ class TestAssign1(unittest.TestCase):
             'edacb', 'edbac', 'edbca', 'edcab', 'edcba'])
 
     def test_permute_06(self):
-        self.assertEqual(permute(""), [""]) 
+        self.assertEqual(permute(""), []) 
 
     def test_is_reachable_01(self):
         self.assertTrue(is_reachable(250))
@@ -54,7 +54,21 @@ class TestAssign1(unittest.TestCase):
         self.assertFalse(is_reachable(92))
 
     def test_is_reachable_05(self):
-        self.assertFalse(is_reachable(876))
+        self.assertTrue(is_reachable(876))
+   
+    def test_is_reachable_06(self):
+        self.assertTrue(is_reachable(42))
+        self.assertFalse(is_reachable(43))
+        self.assertTrue(is_reachable(84))   
+        self.assertFalse(is_reachable(41))
+        self.assertTrue(is_reachable(255))
+        self.assertFalse(is_reachable(105))
+
+    def test_is_reachable_bundle(self):
+        self.assertTrue(is_reachable(42))
+        self.assertTrue(is_reachable(84))
+        self.assertFalse(is_reachable(53))
+        self.assertFalse(is_reachable(41))
 
 
 if __name__ == "__main__":
